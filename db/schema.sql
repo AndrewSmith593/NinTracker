@@ -23,7 +23,8 @@ CREATE TABLE games (
     title VARCHAR (255) NOT NULL,
     platforms VARCHAR (255) NOT NULL,
     genres VARCHAR (255) NOT NULL,
-    background_image VARCHAR (255), 
+    background_image VARCHAR (255),
+    completion BOOLEAN,
     userID INTEGER (11) NOT NULL,
     FOREIGN KEY (userID) REFERENCES users (id) 
 );

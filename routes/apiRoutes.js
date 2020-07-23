@@ -14,10 +14,10 @@ var db = require("../models");
 module.exports = function (app) {
     // CREATE
     // POST new games that the user saves into their database 
-    app.post("/api/posts", function (req, res) {
+    app.post("/api/games", function (req, res) {
         // Add sequelize code for creating a post using req.body,
         // then return the result using res.json
-        db.Post.create(req.body)
+        db.Game.create(req.body)
             .then(function (results) {
                 res.json(results);
             });
@@ -26,8 +26,8 @@ module.exports = function (app) {
 
     // READ
     // GET saved and completed games for the user
-    app.get("/api/posts", function (req, res) {
-        db.Post.findAll()
+    app.get("/api/games", function (req, res) {
+        db.Game.findAll()
             .then(results => res.json(results))
             .catch(err => res.json(err))
 
@@ -35,12 +35,10 @@ module.exports = function (app) {
 
     // UPDATE
     // PUT new updates to a game table
-    app.put("/api/posts", function (req, res) {
+    app.put("/api/games", function (req, res) {
         // req.body.id and return the result to the user using res.json
-        db.Post.update({
-            title: req.body.title,
-            body: req.body.body,
-            category: req.body.category
+        db.Game.update({
+            completion: req.body.completion
         }, {
             where: {
                 id: req.body.id
@@ -55,10 +53,10 @@ module.exports = function (app) {
 
     // DELETE
     // DELETE method to remove a game from a table/list
-    app.delete("/api/posts/:id", function (req, res) {
+    app.delete("/api/games/:id", function (req, res) {
         // Add sequelize code to delete a game where the id is equal to req.params.id, 
         // then return the result to the user using res.json
-        db.Post.destroy({
+        db.Game.destroy({
             where: {
                 id: req.params.id
             }
@@ -66,10 +64,10 @@ module.exports = function (app) {
             res.json(results);
         });
     });
-    app.get("/api/posts", function (req, res) {
+    
+    app.get("/api/games", function (req, res) {
         // Add sequelize code to find all posts, and return them to the user with res.json
-
-        db.Post.findAll()
+        db.Game.findAll()
             .then(results => res.json(results))
             .catch(err => res.json(err))
 
