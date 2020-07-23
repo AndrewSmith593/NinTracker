@@ -1,0 +1,29 @@
+{
+  "name": "nintendotracker",
+  "version": "1.0.0",
+  "description": "A Nintendo game finder and database",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndrewCodesDontYaKnow/NintendoTracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndrewCodesDontYaKnow/NintendoTracker/issues"
+  },
+  "homepage": "https://github.com/AndrewCodesDontYaKnow/NintendoTracker#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mysql2": "^2.1.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "sequelize": "^6.3.3"
+  }
+}

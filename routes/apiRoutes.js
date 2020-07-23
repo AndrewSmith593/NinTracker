@@ -4,7 +4,6 @@
 
 // Require in express router
 const router = require("express").Router();
-const store = require("models");
 
 var db = require("../models");
 
