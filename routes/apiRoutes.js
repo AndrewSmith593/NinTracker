@@ -3,8 +3,8 @@
 // *********************************************************************************
 
 // Require in express router
-const router = require("express").Router();
-
+// const router = require("express").Router();
+// var connection = require()
 var db = require("../models");
 
 
@@ -16,6 +16,7 @@ module.exports = function(app) {
     app.post("/api/games", function (req, res) {
         // Add sequelize code for creating a post using req.body,
         // then return the result using res.json
+        console.log(`post hit the apiRoutes`)
         db.Game.create(req.body)
             .then(function (results) {
                 res.json(results);
@@ -31,6 +32,8 @@ module.exports = function(app) {
             .catch(err => res.json(err))
 
     });
+
+    
 
     // UPDATE
     // PUT new updates to a game table
@@ -64,11 +67,4 @@ module.exports = function(app) {
         });
     });
     
-    app.get("/api/games", function (req, res) {
-        // Add sequelize code to find all posts, and return them to the user with res.json
-        db.Game.findAll()
-            .then(results => res.json(results))
-            .catch(err => res.json(err))
-
-    });
 }
