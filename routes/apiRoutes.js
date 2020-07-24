@@ -10,7 +10,7 @@ var db = require("../models");
 
 // CRUD Operations
 
-module.exports = function (app) {
+module.exports = function(app) {
     // CREATE
     // POST new games that the user saves into their database 
     app.post("/api/games", function (req, res) {
