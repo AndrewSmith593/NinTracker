@@ -1,21 +1,21 @@
 $(document).ready(function () {
 
   // RAWG API call
-  var queryURL = "https://api.rawg.io/api/games?search=metroid+Prime";
+  var queryURL = "https://api.rawg.io/api/games/";
   // title
   var gameTitle = $("#gameTitle");
   // most recent console
-  var recentCon = $("#recentCon")
+  var recentCon = $("#recentCon");
   // release console
-  var originalCon = $("#originalCon")
+  var originalCon = $("#originalCon");
   // background image
   var gameImage = $("#gameImage");
   // genres
-  var genres = $("#genres")
+  var genres = $("#genres");
   // release date
-  var releaseDate = $("#releaseDate")
+  var releaseDate = $("#releaseDate");
   // metacritic score
-  var score = $("#score")
+  var score = $("#score");
 
   // searchedCharacter = searchedCharacter.replace(/\s+/g, "+").toLowerCase();
   // event listenter for button press
