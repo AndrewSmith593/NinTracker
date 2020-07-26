@@ -1,0 +1,14 @@
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.jumbotron {
+    background-color: #e4000f;
+    margin: auto;
+}
+
+* {
+    background-color: #e4000f;
+}
