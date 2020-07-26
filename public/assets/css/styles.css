@@ -5,10 +5,13 @@
 }
 
 .jumbotron {
-    background-color: #e4000f;
     margin: auto;
 }
 
-* {
-    background-color: #e4000f;
+footer {
+    color: #444444;
+}
+
+body {
+    background-color: #E4000F;
 }

@@ -1,23 +1,37 @@
 $(document).ready(function () {
+
   // RAWG API call
   var queryURL = "https://api.rawg.io/api/games?search=metroid+Prime";
-  // where to display information
-  var gameTitle = $("#gameTitle")
+  // title
+  var gameTitle = $("#gameTitle");
+  // most recent console
+  var recentCon = $("#recentCon")
+  // release console
+  var originalCon = $("#originalCon")
+  // background image
+  var gameImage = $("#gameImage");
+  // genres
+  var genres = $("#genres")
+  // release date
+  var releaseDate = $("#releaseDate")
+  // metacritic score
+  var score = $("#score")
+  
+  // searchedCharacter = searchedCharacter.replace(/\s+/g, "+").toLowerCase();
   // event listenter for button press
-  var gameImage = $("#gameImage")
   $("#searchButton").click(function () {
-    console.log(`search button was clicked!`)
+    var gameSearch = $("#gameSearch").val().trim().replace(/\s+/g, "+");
+    var queryURL = "https://api.rawg.io/api/games?search=" + gameSearch;
     $.ajax({
       url: queryURL,
       method: "GET",
     }).then(function (response) {
       JSON.stringify(response)
       console.log(response)
-      // clears current search info
-      // gameInfo.empty();
-      gameTitle.append(results.name);
-      gameTitle.append(results.platforms[0].platform.name)
-      gameImage.attr("src", results.background_image);
+      gameSearch.replace("")
+      gameTitle.text(response.results[0].name);
+      recentCon.text("Most recent console: " + response.results[0].platforms[0].platform.name)
+      gameImage.attr("src", response.results[0].background_image);
       
       // This filter takes in the original RAWG response and returns an array of games that are only on Nintendo systems as the var filteredGames
       var filteredGames = response.results.filter(function (results) {

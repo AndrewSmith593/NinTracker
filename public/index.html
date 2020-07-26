@@ -26,9 +26,8 @@
       <hr class="my-2">
       <p>More info</p>
       <input id="gameSearch" type="text">
-      <button id="searchButton">Search games</button>
       <p class="lead">
-        <a class="btn btn-lg btn-danger" href="Jumbo action link" role="button">Click here!</a>
+        <a id="searchButton" class="btn btn-lg btn-primary" role="button">Search games!</a>
       </p>
     </div>
 
@@ -36,14 +35,15 @@
   <div class="card mb-3" style="max-width: 540px;">
     <div class="row no-gutters">
       <div class="col-md-4">
-        <img id="gameImage" src="..." class="card-img" width="100" height="100">
+        <img id="gameImage" src="..." class="card-img-top" width="100" height="100">
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 id="gameTitle" class="card-title ">Game Title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Most recent console release</small></p>
+          <h5 id="gameTitle" class="card-title">Game Title</h5>
+          <p id="score" class="card-text">Metacritic Score: 98/100</p>
+          <p id="originalCon" class="card-text">Originally released on: placeholder</p>
+          <p id="recentCon" class="card-text">Most recent console: placeholder</p>
+          <p id="genres" class="card-text">Genres:</p>
         </div>
       </div>
     </div>
@@ -51,20 +51,17 @@
 
 
   <footer>
-
-
+    <div class="card-body">
+      Powered by RAWG API
+      <br>
+      Click <a href="https://github.com/AndrewCodesDontYaKnow/NintendoTracker">here</a> to view the source code on
+      Github.
+    </div>
   </footer>
 </body>
 
-<!-- JS, Popper.js, and jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-  integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!-- Custom JS -->
 <script src="/assets/js/script.js"></script>
