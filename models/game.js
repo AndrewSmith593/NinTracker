@@ -1,3 +1,5 @@
+
+
 module.exports = function(sequelize, DataTypes) {
     var Game = sequelize.define("Game", {
       // The email cannot be null, and must be a proper email before creation

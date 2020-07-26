@@ -18,13 +18,10 @@ CREATE TABLE users (
 	password VARCHAR (255) NOT NULL
 );
 
-CREATE TABLE games (
-    id INTEGER (11) NOT NULL PRIMARY KEY,
-    title VARCHAR (255) NOT NULL,
-    platforms VARCHAR (255) NOT NULL,
-    genres VARCHAR (255) NOT NULL,
-    background_image VARCHAR (255),
+CREATE TABLE reference (
+    id INTEGER (11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    gameID INTEGER (11) NOT NULL,
+	userID INTEGER (11) NOT NULL,
     completion BOOLEAN,
-    userID INTEGER (11) NOT NULL,
-    FOREIGN KEY (userID) REFERENCES users (id) 
+	FOREIGN KEY (userID) REFERENCES users (id)
 );
