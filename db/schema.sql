@@ -18,10 +18,10 @@ CREATE TABLE users (
 	password VARCHAR (255) NOT NULL
 );
 
-CREATE TABLE reference (
+CREATE TABLE references (
     id INTEGER (11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
     gameID INTEGER (11) NOT NULL,
 	userID INTEGER (11) NOT NULL,
-    completion BOOLEAN,
+    completion BOOLEAN DEFAULT TRUE,
 	FOREIGN KEY (userID) REFERENCES users (id)
 );
