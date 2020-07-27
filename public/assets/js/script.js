@@ -32,7 +32,7 @@ $(document).ready(function () {
       var firstResult = response.results[0]
       var conIndex = firstResult.platforms.length - 1
       var gameID = firstResult.id
-      console.log(gameID);
+      // console.log(gameID);
       gameTitle.text(firstResult.name);
       originalCon.text(`Original console: ${firstResult.platforms[conIndex].platform.name}`)
       recentCon.text(`Most recent console: ${firstResult.platforms[0].platform.name}`);
@@ -66,7 +66,6 @@ $(document).ready(function () {
 
       // This filter takes in the original RAWG response and returns an array of games that are only on Nintendo systems as the var filteredGames
       var filteredGames = response.results.filter(function (results) {
-        console.log("results:")
         // console.log(results)
         var platformArray = results.platforms.filter(function (data) {
           return data.platform.id == 7 || data.platform.id == 8 || data.platform.id == 10 || data.platform.id == 11 || data.platform.id == 24 || data.platform.id == 43 || data.platform.id == 79 || data.platform.id == 49 || data.platform.id == 26 || data.platform.id == 105 || data.platform.id == 83;
