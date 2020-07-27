@@ -45,7 +45,6 @@ $(document).ready(function () {
         var genreArray = firstResult.genres
         for (let i = 0; i < genreArray.length; i++) {
 
-          console.log(genreArray)
           var currentGenre = (` ${genreArray[i].name}`);
           
           genreList.push(currentGenre)
