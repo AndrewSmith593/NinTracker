@@ -19,41 +19,59 @@
 </head>
 
 <body>
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-3">Nintendo Tracker says "Hello World"</h1>
-      <p class="lead">Search for Nintendo games!</p>
-      <hr class="my-2">
-      <label for="gameSearch">Search for a game below</label>
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand">Navbar</a>
+    <form class="form-inline">
       <input class="form-control" id="gameSearch" placeholder="Super Mario Bros.">
       <p class="lead">
         <a id="searchButton" class="btn btn-lg btn-primary" role="button">Search games!</a>
       </p>
-    </div>
-
-  </div>
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <img id="gameImage" src="..." class="card-img-top" width="100" height="100">
-        <button id="gameSave" type="submit" class="btn btn-lg btn-success">Save</button>
+    </form>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="card col-4 list-container" style="width: 18rem;">
+        <div class="card-header">
+          Saved Games
+        </div>
+        <!-- <div class="card-body">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div> -->
+        <ul class="list-group list-group-flush savedGames">
+          <!-- <li class="list-group-item">Saved Game 1</li>
+          <li class="list-group-item">Saved Game 2</li>
+          <li class="list-group-item">Saved Game 3</li> -->
+        </ul>
+        <!-- <div class="card-body">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div> -->
       </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 id="gameTitle" class="card-title">Game Title</h5>
-          <p id="score" class="card-text">Metacritic Score: placeholder</p>
-          <p id="originalCon" class="card-text">Originally released on: placeholder</p>
-          <p id="recentCon" class="card-text">Most recent console: placeholder</p>
-          <p id="releaseDate" class="card-text">Release Date: placeholder</p>
-          <p id="genres" class="card-text">Genres:</p>
+      <div class="jumbotron-fluid" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-6 col-md-offset-3">
+            <h2>Welcome <span class="member-name"></span></h2>
+          </div>
+          <div class="col-md-4">
+            <img id="gameImage" src="..." class="card-img-top" width="100" height="100">
+            <button id="gameSave" type="submit" class="btn btn-lg btn-success">Save</button>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 id="gameTitle" class="card-title">Game Title</h5>
+              <p id="score" class="card-text">Metacritic Score: placeholder</p>
+              <p id="originalCon" class="card-text">Originally released on: placeholder</p>
+              <p id="recentCon" class="card-text">Most recent console: placeholder</p>
+              <p id="releaseDate" class="card-text">Release Date: placeholder</p>
+              <p id="genres" class="card-text">Genres:</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-
   <footer>
-    <div class="card-body">
+    <div class="footer card-body">
       Powered by <a href="https://rawg.io/apidocs">RAWG API</a>
       <br>
       Click <a href="https://github.com/AndrewCodesDontYaKnow/NintendoTracker">here</a> to view the source code on
