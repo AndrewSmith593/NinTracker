@@ -17,7 +17,7 @@ module.exports = function (app) {
         // Add sequelize code for creating a post using req.body,
         // then return the result using res.json
         console.log(`post hit the games apiRoute`)
-        db.Reference.create(req.body)
+        db.referenceTable.create(req.body)
             .then(function (results) {
                 res.json(results);
             });
@@ -27,9 +27,7 @@ module.exports = function (app) {
     // READ
     // GET saved and completed games for the user
     app.get("/api/games", function (req, res) {
-        db.Reference.findAll({
-            include: [db.]
-        })
+        db.referenceTable.findAll()
             .then(results => res.json(results))
             .catch(err => res.json(err))
 
@@ -39,7 +37,7 @@ module.exports = function (app) {
     // PUT new updates to a game table
     app.put("/api/games", function (req, res) {
         // req.body.id and return the result to the user using res.json
-        db.Reference.update({
+        db.referenceTable.update({
             completion: req.body.completion
         }, {
             where: {
@@ -58,7 +56,7 @@ module.exports = function (app) {
     app.delete("/api/games/:id", function (req, res) {
         // Add sequelize code to delete a game where the id is equal to req.params.id, 
         // then return the result to the user using res.json
-        db.Reference.destroy({
+        db.referenceTable.destroy({
             where: {
                 id: req.params.id
             }
