@@ -31,6 +31,8 @@ $(document).ready(function () {
       $('#gameSearch').val('');
       var firstResult = response.results[0]
       var conIndex = firstResult.platforms.length - 1
+      var gameID = firstResult.id
+      console.log(gameID);
       gameTitle.text(firstResult.name);
       originalCon.text(`Original console: ${firstResult.platforms[conIndex].platform.name}`)
       recentCon.text(`Most recent console: ${firstResult.platforms[0].platform.name}`);
