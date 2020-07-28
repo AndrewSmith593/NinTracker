@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
   // RAWG API call
   var queryURL = "https://api.rawg.io/api/games/";
   // title
@@ -16,6 +15,42 @@ $(document).ready(function () {
   var releaseDate = $("#releaseDate");
   // metacritic score
   var score = $("#score");
+  
+  var userIDNumber = getUserID()
+  // This file just does a GET request to figure out which user is logged in
+  // and updates the HTML on the page
+  
+  function getUserID() {
+    $.get("/api/user_data").then(function (data) {
+      var userNum = data.id;
+      console.log(userNum)
+      return userNum;
+    });
+  }
+
+  // SAVE BUTTON
+  // --when the save button is clicked--
+  $("#gameSave").click(function () {
+    // 1. grab the ID of the currently loaded game
+    // var gameIdNum = gameID
+    // 2. grab the ID of the current user
+    // var userIdNum = apiRoutes.getUserId()
+    // 3. post the ID of the game and the ID of the user into a new row of the reference table
+    // apiRoutes.saveGame(gameID, userID);
+    console.log(getuserID());
+    // create an object to send to api/reference that holds the info we want to add
+    newGame = { "gameID": 22707, "userID": userNum }
+    console.log(newGame);
+
+    $.ajax({
+      type: "POST",
+      url: "/api/reference",
+      data: newGame,
+      success: function () {
+        console.log(`Game added to reference table`)
+      }
+    });
+  });
 
   // searchedCharacter = searchedCharacter.replace(/\s+/g, "+").toLowerCase();
   // event listenter for button press
@@ -40,15 +75,17 @@ $(document).ready(function () {
       gameImage.attr("src", firstResult.background_image);
       // genres.text(`Consoles: ${genreList}`)
 
+      return gameID;
+
       function returnGenres() {
         var genreList = [];
         var genreArray = firstResult.genres
         for (let i = 0; i < genreArray.length; i++) {
 
           var currentGenre = (` ${genreArray[i].name}`);
-          
+
           genreList.push(currentGenre)
-          
+
         }
         console.log(genreList)
         genres.text(`Genres: ${genreList}`)
