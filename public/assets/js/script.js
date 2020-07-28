@@ -1,32 +1,28 @@
 $(document).ready(function () {
-  // RAWG API call
-  var queryURL = "https://api.rawg.io/api/games/";
-  // title
-  var gameTitle = $("#gameTitle");
-  // most recent console
-  var recentCon = $("#recentCon");
-  // release console
-  var originalCon = $("#originalCon");
-  // background image
-  var gameImage = $("#gameImage");
-  // genres
-  var genres = $("#genres");
-  // release date
-  var releaseDate = $("#releaseDate");
-  // metacritic score
-  var score = $("#score");
-  var gameList = $("#savedGames")
-  var userIDNumber;
-  var currentGameID;
-  var gameTitle;
   
+  // ==================== Global Variables ==================== //
+
+  var gameTitle = $("#gameTitle"); // var for where the game title will be displayed
+  var recentCon = $("#recentCon"); // var for where the most recent console will be displayed
+  var originalCon = $("#originalCon"); // var for where the release console will be displayed
+  var gameImage = $("#gameImage"); // var for where the game image will be displayed
+  var genres = $("#genres"); // var for where the genre will be displayed
+  var releaseDate = $("#releaseDate"); // var for where the release date will be displayed
+  var score = $("#score"); // var for where the game score will be displayed
+  var gameList = $("#savedGames") // var for where the saved games list will be displayed
+  var userIDNumber; // var to hold the current users id number
+  var currentGameID; // var to hold currently searched game id number
+  // var gameTitle;
+
+
   // GET request to figure out which user is logged in and grabs the ID of the current user
   $.get("/api/user_data").then(function (data) {
     userIDNumber = data.id;
   });
 
-  // SAVE BUTTON
-  // --when the save button is clicked--
+  // ==================== Buttons ==================== //
+
+  // when the SAVE BUTTON is clicked
   $("#gameSave").click(function () {
     console.log(`gameID to save is ${currentGameID}`);
     console.log(`user id to save is ${userIDNumber}`);
