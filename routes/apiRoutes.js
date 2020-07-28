@@ -12,7 +12,7 @@ var passport = require("../config/passport");
 
 module.exports = function (app) {
     // CREATE
-    // POST new games that the user saves into their database 
+    // POST new games that the user saves into theuser_datair database 
     app.post("/api/games", function (req, res) {
         // Add sequelize code for creating a post using req.body,
         // then return the result using res.json
@@ -81,6 +81,10 @@ module.exports = function (app) {
 
     // ============== User Routes ============== //
 
+
+    app.post("/api/login", passport.authenticate("local"), function (req, res) {
+        res.json(req.user)
+    });
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -125,4 +129,18 @@ module.exports = function (app) {
             });
         }
     });
+
+    app.get("/api/user_data/:id", function(req, res) {
+        // Here we add an "include" property to our options in our findOne query
+        // We set the value to an array of the models we want to include in a left outer join
+        // In this case, just db.Post
+        db.users.findAll({
+          where: {
+            id: req.params.id
+          },
+          include: [db.referenceTable]
+        }).then(function(dbUser) {
+          res.json(dbUser);
+        });
+      });
 }
