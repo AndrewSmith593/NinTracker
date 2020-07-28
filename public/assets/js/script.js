@@ -15,7 +15,7 @@ $(document).ready(function () {
   var releaseDate = $("#releaseDate");
   // metacritic score
   var score = $("#score");
-  
+  var gameList = $("#savedGames")
   var userIDNumber;
   var currentGameID;
   var gameTitle;
@@ -34,13 +34,14 @@ $(document).ready(function () {
     // create an object to send to api/games that holds the info we want to add
     newGame = { "gameName": gameName, "gameID": currentGameID, "completion": false, "userId": userIDNumber }
     console.log(newGame);
-
+    gameList.empty();
     $.ajax({
       type: "POST",
       url: "/api/games",
       data: newGame,
       success: function () {
         console.log(`Game added to reference table`)
+        showSavedGames();
       }
     });
   });
@@ -61,7 +62,7 @@ $(document).ready(function () {
       var conIndex = firstResult.platforms.length - 1
       currentGameID = firstResult.id
       gameName = firstResult.name
-      console.log("Current gameID is " + currentGameID);
+      // console.log("Current gameID is " + currentGameID);
       gameTitle.text(firstResult.name);
       originalCon.text(`Original console: ${firstResult.platforms[conIndex].platform.name}`)
       recentCon.text(`Most recent console: ${firstResult.platforms[0].platform.name}`);
@@ -129,18 +130,23 @@ $(document).ready(function () {
   // console.log(filtered);
 
   // Get request to get all saved games and filter by the current user
-  $.get("/api/games").then(function (data) {
-    // userIDNumber
-    // data is an object
-    for (let i = 0; i < data.length; i++) {
-      var savedGame = data[i];
-      if (savedGame.userId == userIDNumber) {
-        // render to the page
+  function showSavedGames() {
+    $.get("/api/games").then(function (data) {
+      // userIDNumber
+      // data is an object
+      for (let i = 0; i < data.length; i++) {
+        var savedGame = data[i];
+        if (savedGame.userId == userIDNumber) {
+          // render to the page
+          var newGame = $("<li>").text(data[i].gameName);
+          console.log(data[i].gameName);
+          gameList.append(newGame)
+          console.log("games displayed")
+        }
       }
-    }
-  
-  });
+    
+    });
+  }
 
-
-
+showSavedGames();
 });
