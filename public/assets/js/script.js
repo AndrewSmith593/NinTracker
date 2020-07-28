@@ -38,47 +38,55 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (response) {
-      JSON.stringify(response);
       console.log(response);
-      $('#gameSearch').val(''); // clear the search bar
-      var firstResult = response.results[0] // get the data from the first response from the API call
-      var conIndex = firstResult.platforms.length - 1 // get the index for the original console
-      currentGameID = firstResult.id // set the currentGameID global variable to the most recently searched gameID
-      gameName = firstResult.name // set the gameName global variable to the most recently searched game title
-      gameTitle.text(firstResult.name); // displays the title of the first response to the user
-      originalCon.text(`Original console: ${firstResult.platforms[conIndex].platform.name}`); // displays the original console of the first response to the user
-      recentCon.text(`Most recent console: ${firstResult.platforms[0].platform.name}`); // displays the most recent console of the first response to the user
-      releaseDate.text("Released on: " + firstResult.released); // displays the release date of the first response to the user
-      gameImage.attr("src", firstResult.background_image); // sets the image for the first response to the user
+      // JSON.stringify(response);
+      response.results[0].platforms.filter(function (data) {
 
-      function returnGenres() { // gets the list of genres from the results object and displays them to the user
-        var genreList = [];
-        var genreArray = firstResult.genres
-        for (let i = 0; i < genreArray.length; i++) {
-          var currentGenre = (` ${genreArray[i].name}`);
-          genreList.push(currentGenre)
+        return data.platform.id == 7 || data.platform.id == 8 || data.platform.id == 10 || data.platform.id == 11 || data.platform.id == 24 || data.platform.id == 43 || data.platform.id == 79 || data.platform.id == 49 || data.platform.id == 26 || data.platform.id == 105 || data.platform.id == 83;
+      }).then(function (response){
+        JSON.stringify(response);
+        console.log(`here is the filtered games response`)
+        console.log(response);
+        $('#gameSearch').val(''); // clear the search bar
+        var firstResult = response.results[0] // get the data from the first response from the API call
+        var conIndex = firstResult.platforms.length - 1 // get the index for the original console
+        currentGameID = firstResult.id // set the currentGameID global variable to the most recently searched gameID
+        gameName = firstResult.name // set the gameName global variable to the most recently searched game title
+        gameTitle.text(firstResult.name); // displays the title of the first response to the user
+        originalCon.text(`Original console: ${firstResult.platforms[conIndex].platform.name}`); // displays the original console of the first response to the user
+        recentCon.text(`Most recent console: ${firstResult.platforms[0].platform.name}`); // displays the most recent console of the first response to the user
+        releaseDate.text("Released on: " + firstResult.released); // displays the release date of the first response to the user
+        gameImage.attr("src", firstResult.background_image); // sets the image for the first response to the user
+
+        function returnGenres() { // gets the list of genres from the results object and displays them to the user
+          var genreList = [];
+          var genreArray = firstResult.genres
+          for (let i = 0; i < genreArray.length; i++) {
+            var currentGenre = (` ${genreArray[i].name}`);
+            genreList.push(currentGenre)
+          }
+          genres.text(`Genres: ${genreList}`)
+          return genreList;
+
         }
-        genres.text(`Genres: ${genreList}`)
-        return genreList;
+        returnGenres();
 
-      }
-      returnGenres();
-
-      if (firstResult.metacritic == null) { // displays the average rating if there is not metacritic score
-        score.text(`Average Rating: ${firstResult.rating}/5`)
-      } else {
-        score.text(`Metacritic Score: ${firstResult.metacritic}/100`);
-      }
+        if (firstResult.metacritic == null) { // displays the average rating if there is not metacritic score
+          score.text(`Average Rating: ${firstResult.rating}/5`)
+        } else {
+          score.text(`Metacritic Score: ${firstResult.metacritic}/100`);
+        }
 
 
-      // This filter will take in the original RAWG response and returns an array of games that are only on Nintendo systems as the var filteredGames
-      var filteredGames = response.results.filter(function (results) {
-        var platformArray = results.platforms.filter(function (data) {
-          return data.platform.id == 7 || data.platform.id == 8 || data.platform.id == 10 || data.platform.id == 11 || data.platform.id == 24 || data.platform.id == 43 || data.platform.id == 79 || data.platform.id == 49 || data.platform.id == 26 || data.platform.id == 105 || data.platform.id == 83;
-        })
-      });
-    });
+        // ============FILTER=====================================//
+
+        // This filter will take in the original RAWG response and returns an array of games that are only on Nintendo systems as the var filteredGames
+
+        
+      })});
   });
+
+
 
   // ==================== Functions ==================== //
   function getCurrentUser() { // GET request to figure out which user is logged in and grabs the ID of the current user
@@ -98,10 +106,10 @@ $(document).ready(function () {
       }
     });
   }
-  
+
 
   // ==================== Functions to Run on Page Load ==================== //
-  
+
   getCurrentUser(); // get the ID of the current user on page load
   showSavedGames(); // render the user's saved games list on page load
 });
