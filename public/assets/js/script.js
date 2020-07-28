@@ -17,31 +17,27 @@ $(document).ready(function () {
   var score = $("#score");
   
   var userIDNumber;
-  // This file just does a GET request to figure out which user is logged in
-  // and updates the HTML on the page
+  var currentGameID;
+  var gameTitle;
   
-    $.get("/api/user_data").then(function (data) {
-      userIDNumber = data.id;
-      console.log(userIDNumber)
-    });
+  // GET request to figure out which user is logged in and grabs the ID of the current user
+  $.get("/api/user_data").then(function (data) {
+    userIDNumber = data.id;
+  });
 
   // SAVE BUTTON
   // --when the save button is clicked--
   $("#gameSave").click(function () {
-    
-    // 1. grab the ID of the currently loaded game
-    // var gameIdNum = gameID
-    // 2. grab the ID of the current user
-    // var userIdNum = apiRoutes.getUserId()
-    // 3. post the ID of the game and the ID of the user into a new row of the reference table
-    // apiRoutes.saveGame(gameID, userID);
-    // create an object to send to api/reference that holds the info we want to add
-    newGame = { "gameID": 22707, "userID": userNum }
+    console.log(`gameID to save is ${currentGameID}`);
+    console.log(`user id to save is ${userIDNumber}`);
+    console.log(`the game title is ${gameName}`)
+    // create an object to send to api/games that holds the info we want to add
+    newGame = { "gameName": gameName, "gameID": currentGameID, "completion": false, "userId": userIDNumber }
     console.log(newGame);
 
     $.ajax({
       type: "POST",
-      url: "/api/reference",
+      url: "/api/games",
       data: newGame,
       success: function () {
         console.log(`Game added to reference table`)
@@ -49,8 +45,8 @@ $(document).ready(function () {
     });
   });
 
-  // searchedCharacter = searchedCharacter.replace(/\s+/g, "+").toLowerCase();
-  // event listenter for button press
+
+  // --when the search button is clicked
   $("#searchButton").click(function () {
     var gameSearch = $("#gameSearch").val().trim().replace(/\s+/g, "+");
     var queryURL = "https://api.rawg.io/api/games?search=" + gameSearch;
@@ -63,15 +59,15 @@ $(document).ready(function () {
       $('#gameSearch').val('');
       var firstResult = response.results[0]
       var conIndex = firstResult.platforms.length - 1
-      var gameID = firstResult.id
-      // console.log(gameID);
+      currentGameID = firstResult.id
+      gameName = firstResult.name
+      console.log("Current gameID is " + currentGameID);
       gameTitle.text(firstResult.name);
       originalCon.text(`Original console: ${firstResult.platforms[conIndex].platform.name}`)
       recentCon.text(`Most recent console: ${firstResult.platforms[0].platform.name}`);
       releaseDate.text("Released on: " + firstResult.released)
       gameImage.attr("src", firstResult.background_image);
 
-      return gameID;
 
       function returnGenres() {
         var genreList = [];
@@ -114,7 +110,6 @@ $(document).ready(function () {
     // FILTER RESPONSE INTO NEW ARRAY CALLED GAMES
   });
 
-  // console.log(games.results[0].platforms[0].platform.id)
 
   // const responsefromAPI = {
   //   item1: { key: 'sdfd', value:'sdfd' },
@@ -132,5 +127,20 @@ $(document).ready(function () {
   //   }, {});
 
   // console.log(filtered);
+
+  // Get request to get all saved games and filter by the current user
+  $.get("/api/games").then(function (data) {
+    // userIDNumber
+    // data is an object
+    for (let i = 0; i < data.length; i++) {
+      var savedGame = data[i];
+      if (savedGame.userId == userIDNumber) {
+        // render to the page
+      }
+    }
+  
+  });
+
+
 
 });
