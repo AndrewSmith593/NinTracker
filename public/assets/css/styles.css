@@ -14,5 +14,16 @@ footer {
 }
 
 body {
-    background-color: white
+    background-color: #e4000f;
+}
+
+.navbar {
+    background-color: #444444;
+    color: white;
+}
+
+
+
+.bg-light {
+    background-color: #444444!important;
 }

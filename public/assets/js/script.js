@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  
+
   // ==================== Global Variables ==================== //
 
   var gameTitle = $("#gameTitle"); // var for where the game title will be displayed
@@ -14,131 +14,94 @@ $(document).ready(function () {
   var currentGameID; // var to hold currently searched game id number
   // var gameTitle;
 
-
-  // GET request to figure out which user is logged in and grabs the ID of the current user
-  $.get("/api/user_data").then(function (data) {
-    userIDNumber = data.id;
-  });
-
   // ==================== Buttons ==================== //
 
- 
   $("#gameSave").click(function () {  // when the SAVE BUTTON is clicked
     // create an object to send to api/games that holds the game data we want to add
     newGame = { "gameName": gameName, "gameID": currentGameID, "completion": false, "userId": userIDNumber }
-    gameList.empty(); // clear the game list
-    $.ajax({
+    gameList.empty(); // clear the saved game list
+    $.ajax({ // add the new game data to the saved game list
       type: "POST",
       url: "/api/games",
       data: newGame,
-      success: function () {
+      success: function () { // once the game is saved to the table, rerender the updated saved games list
         console.log(`Game added to reference table`);
-        showSavedGames(); 
+        showSavedGames();
       }
     });
   });
 
-
-  // --when the search button is clicked
-  $("#searchButton").click(function () {
-    var gameSearch = $("#gameSearch").val().trim().replace(/\s+/g, "+");
-    var queryURL = "https://api.rawg.io/api/games?search=" + gameSearch;
-    $.ajax({
+  $("#searchButton").click(function () { // when the SEARCH BUTTON is clicked
+    var gameSearch = $("#gameSearch").val().trim().replace(/\s+/g, "+"); // trim the values from the search box and replace spaces betwen words with "+"
+    var queryURL = "https://api.rawg.io/api/games?search=" + gameSearch; // set up the URL for the RAWG API request
+    $.ajax({ // RAWG GET request
       url: queryURL,
       method: "GET",
     }).then(function (response) {
       JSON.stringify(response);
       console.log(response);
-      $('#gameSearch').val('');
-      var firstResult = response.results[0]
-      var conIndex = firstResult.platforms.length - 1
-      currentGameID = firstResult.id
-      gameName = firstResult.name
-      // console.log("Current gameID is " + currentGameID);
-      gameTitle.text(firstResult.name);
-      originalCon.text(`Original console: ${firstResult.platforms[conIndex].platform.name}`)
-      recentCon.text(`Most recent console: ${firstResult.platforms[0].platform.name}`);
-      releaseDate.text("Released on: " + firstResult.released)
-      gameImage.attr("src", firstResult.background_image);
+      $('#gameSearch').val(''); // clear the search bar
+      var firstResult = response.results[0] // get the data from the first response from the API call
+      var conIndex = firstResult.platforms.length - 1 // get the index for the original console
+      currentGameID = firstResult.id // set the currentGameID global variable to the most recently searched gameID
+      gameName = firstResult.name // set the gameName global variable to the most recently searched game title
+      gameTitle.text(firstResult.name); // displays the title of the first response to the user
+      originalCon.text(`Original console: ${firstResult.platforms[conIndex].platform.name}`); // displays the original console of the first response to the user
+      recentCon.text(`Most recent console: ${firstResult.platforms[0].platform.name}`); // displays the most recent console of the first response to the user
+      releaseDate.text("Released on: " + firstResult.released); // displays the release date of the first response to the user
+      gameImage.attr("src", firstResult.background_image); // sets the image for the first response to the user
 
-
-      function returnGenres() {
+      function returnGenres() { // gets the list of genres from the results object and displays them to the user
         var genreList = [];
         var genreArray = firstResult.genres
         for (let i = 0; i < genreArray.length; i++) {
-
           var currentGenre = (` ${genreArray[i].name}`);
-
           genreList.push(currentGenre)
-
         }
-        console.log(genreList)
         genres.text(`Genres: ${genreList}`)
         return genreList;
 
       }
-      returnGenres()
+      returnGenres();
 
-      if (firstResult.metacritic == null) {
+      if (firstResult.metacritic == null) { // displays the average rating if there is not metacritic score
         score.text(`Average Rating: ${firstResult.rating}/5`)
       } else {
-        score.text(`Metacritic Score: ${firstResult.metacritic}/100`)
+        score.text(`Metacritic Score: ${firstResult.metacritic}/100`);
       }
 
 
-      // This filter takes in the original RAWG response and returns an array of games that are only on Nintendo systems as the var filteredGames
+      // This filter will take in the original RAWG response and returns an array of games that are only on Nintendo systems as the var filteredGames
       var filteredGames = response.results.filter(function (results) {
-        // console.log(results)
         var platformArray = results.platforms.filter(function (data) {
           return data.platform.id == 7 || data.platform.id == 8 || data.platform.id == 10 || data.platform.id == 11 || data.platform.id == 24 || data.platform.id == 43 || data.platform.id == 79 || data.platform.id == 49 || data.platform.id == 26 || data.platform.id == 105 || data.platform.id == 83;
-
         })
-        // console.log(`here is the platform:`)
-        // console.log(platformArray)
       });
-      // console.log(filteredGames)
     });
-    // info to append to page
-
-    // FILTER RESPONSE INTO NEW ARRAY CALLED GAMES
   });
 
-
-  // const responsefromAPI = {
-  //   item1: { key: 'sdfd', value:'sdfd' },
-  //   item2: { key: 'sdfd', value:'sdfd' },
-  //   item3: { key: 'sdfd', value:'sdfd' }
-  // };
-  // these are the api platform ID's in const allowed: 7, 8, 10, 11, 24, 43, 79, 49, 26, 105, 83
-  // const allowed = [''];
-
-  // const filtered = Object.values(raw)
-  //   .filter(key => allowed.includes(key))
-  //   .reduce((obj, key) => {
-  //     obj[key] = raw[key];
-  //     return obj;
-  //   }, {});
-
-  // console.log(filtered);
-
-  // Get request to get all saved games and filter by the current user
-  function showSavedGames() {
-    $.get("/api/games").then(function (data) {
-      // userIDNumber
-      // data is an object
-      for (let i = 0; i < data.length; i++) {
-        var savedGame = data[i];
-        if (savedGame.userId == userIDNumber) {
-          // render to the page
-          var newGame = $("<li>").text(data[i].gameName);
-          console.log(data[i].gameName);
-          gameList.append(newGame)
-          console.log("games displayed")
-        }
-      }
-    
+  // ==================== Functions ==================== //
+  function getCurrentUser() { // GET request to figure out which user is logged in and grabs the ID of the current user
+    $.get("/api/user_data").then(function (data) {
+      userIDNumber = data.id;
     });
   }
 
-showSavedGames();
+  function showSavedGames() { // this function displays the users saved games to the page
+    $.get("/api/games").then(function (data) { // gets a list of all saved games
+      for (let i = 0; i < data.length; i++) { // for each game in the saved games table
+        var savedGame = data[i]; // var for the current data object
+        if (savedGame.userId == userIDNumber) { // if the userID for the current object is the same as the current user
+          var newGame = $("<li>").text(data[i].gameName); // set the text for a new list item
+          gameList.append(newGame); // append the game to the page
+        }
+      }
+    });
+  }
+  
+
+  // ==================== Functions to Run on Page Load ==================== //
+  
+  getCurrentUser(); // get the ID of the current user on page load
+  showSavedGames(); // render the user's saved games list on page load
 });
