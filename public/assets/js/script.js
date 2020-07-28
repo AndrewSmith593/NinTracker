@@ -26,14 +26,14 @@ $(document).ready(function () {
   $("#gameSave").click(function () {  // when the SAVE BUTTON is clicked
     // create an object to send to api/games that holds the game data we want to add
     newGame = { "gameName": gameName, "gameID": currentGameID, "completion": false, "userId": userIDNumber }
-    gameList.empty(); //
+    gameList.empty(); // clear the game list
     $.ajax({
       type: "POST",
       url: "/api/games",
       data: newGame,
       success: function () {
-        console.log(`Game added to reference table`)
-        showSavedGames();
+        console.log(`Game added to reference table`);
+        showSavedGames(); 
       }
     });
   });
