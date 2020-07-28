@@ -22,15 +22,11 @@ $(document).ready(function () {
 
   // ==================== Buttons ==================== //
 
-  // when the SAVE BUTTON is clicked
-  $("#gameSave").click(function () {
-    console.log(`gameID to save is ${currentGameID}`);
-    console.log(`user id to save is ${userIDNumber}`);
-    console.log(`the game title is ${gameName}`)
-    // create an object to send to api/games that holds the info we want to add
+ 
+  $("#gameSave").click(function () {  // when the SAVE BUTTON is clicked
+    // create an object to send to api/games that holds the game data we want to add
     newGame = { "gameName": gameName, "gameID": currentGameID, "completion": false, "userId": userIDNumber }
-    console.log(newGame);
-    gameList.empty();
+    gameList.empty(); //
     $.ajax({
       type: "POST",
       url: "/api/games",
