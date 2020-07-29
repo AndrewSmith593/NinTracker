@@ -39,16 +39,39 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (response) {
       console.log(response);
-      // JSON.stringify(response);
-      response.results[0].platforms.filter(function (data) {
+      JSON.stringify(response);
+      
+      var nintendoGames = []
 
-        return data.platform.id == 7 || data.platform.id == 8 || data.platform.id == 10 || data.platform.id == 11 || data.platform.id == 24 || data.platform.id == 43 || data.platform.id == 79 || data.platform.id == 49 || data.platform.id == 26 || data.platform.id == 105 || data.platform.id == 83;
-      }).then(function (response){
-        JSON.stringify(response);
-        console.log(`here is the filtered games response`)
-        console.log(response);
+      // for every game...
+      for (let i = 0; i < response.results.length; i++) {
+        console.log(response.results[i])
+
+        // var consolecheck = 0;
+
+        // for every platform in each game 
+        for (let j = 0; j < response.results[i].platforms.length; j++) {
+
+          var platformId = response.results[i].platforms[j].platform.id;
+          
+          if (platformId == 7 || platformId == 8 || platformId == 10 || platformId == 11 || platformId == 24 || platformId == 43 || platformId == 79 || platformId == 49 || platformId == 26 || platformId == 105 || platformId == 83) {
+          
+            nintendoGames.push(response.results[i])
+            break
+        
+          }
+          // BRAINSTORM funny responses for nin-Nintendo game results
+      }
+      console.log(`here is the nintendoGames array:`)
+      console.log(nintendoGames)
+    }
+   
+        console.log(`here is the filtered games nintendoGames`)
+        console.log(nintendoGames);
         $('#gameSearch').val(''); // clear the search bar
-        var firstResult = response.results[0] // get the data from the first response from the API call
+        var firstResult = nintendoGames[0];
+        console.log(`here is the first result: ${firstResult}`)
+        console.log(firstResult) // get the data from the first response from the API call
         var conIndex = firstResult.platforms.length - 1 // get the index for the original console
         currentGameID = firstResult.id // set the currentGameID global variable to the most recently searched gameID
         gameName = firstResult.name // set the gameName global variable to the most recently searched game title
@@ -83,7 +106,7 @@ $(document).ready(function () {
         // This filter will take in the original RAWG response and returns an array of games that are only on Nintendo systems as the var filteredGames
 
         
-      })});
+      });
   });
 
 
