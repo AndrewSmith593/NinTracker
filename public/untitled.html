@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>NinTracker</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/Header-Dark.css">
+    <link rel="stylesheet" href="assets/css/Highlight-Phone.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
+    <!-- Custom Stylesheet Link -->
+    <link href="./assets/css/styles.css" rel="stylesheet">
+
+    <title>Nintendo Tracker</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand">Nintendo Tracker</a>
+        <form class="form-inline">
+            <input class="form-control" id="gameSearch" placeholder="Super Mario Bros.">
+            <p class="lead">
+                <a id="searchButton" class="btn btn-lg btn-primary" role="button">Search games!</a>
+            </p>
+        </form>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-xl-4 offset-xl-0">
+                <div class="card">
+                    <div class="card-body list-container"><img>
+                        <h4 class="card-title">Saved Games</h4>
+                        <!-- <h6 class="text-muted card-subtitle mb-2">Subtitle</h6> -->
+                        <li id="savedGames" class="list-group list-group-flush savedGames">
+                        </li>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xl-8 offset-xl-0">
+                <div class="card">
+                    <div class="card-body"><img>
+                        <img id="gameImage" src="" class="card-img-top">
+                        <h4 class="card-title" id="gameTitle">Game Title</h4>
+                        <h6 class="text-muted card-subtitle mb-2" id="score">Score</h6>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <p id="originalCon" class="card-text">Original</p>
+                                <p id="recentCon" class="card-text">Recent</p>
+                                <p id="releaseDate" class="card-text">Release Date</p>
+                                <p id="genres" class="card-text">Genre</p>
+                            </div>
+                        </div>
+                        <p class="card-text">Extra text can go here?</p><a class="card-link btn btn-success" id="gameSave">Save</a><a class="card-link btn btn-success" id="nextGame">Next</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 my-auto h-100 text-center text-lg-left">
+                    <div class="card-body">
+                        Powered by <a href="https://rawg.io/apidocs">RAWG API</a>
+                        <br>
+                        Click <a href="https://github.com/AndrewCodesDontYaKnow/NintendoTracker">here</a> to view the
+                        source code on
+                        Github.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <!-- Custom JS -->
+    <script type="text/javascript" src="/assets/js/script.js"></script>
+</body>
+
+</html>
