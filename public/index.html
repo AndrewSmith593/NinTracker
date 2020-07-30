@@ -5,44 +5,46 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Home - Nintendo Tracker</title>
-    <!-- Bootstrap Stylesheet Links -->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
     <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/Header-Blue.css">
     <link rel="stylesheet" href="assets/css/Header-Dark.css">
     <link rel="stylesheet" href="assets/css/Highlight-Phone.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
-    <!-- Custom Stylesheet Link -->
-    <link href="/assets/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/Newsletter-Subscription-Form.css">
+    <link rel="stylesheet" href="assets/css/Pretty-Search-Form.css">
+    <link rel="stylesheet" href="assets/css/Projects-Horizontal.css">
+    <link rel="stylesheet" href="assets/css/Rounded-Search-Input-field-1.css">
+    <link rel="stylesheet" href="assets/css/Rounded-Search-Input-field.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand bg-light navigation-clean">
-        <div class="container"><a class="navbar-brand" href="#">Nintendo Tracker</a><button data-toggle="collapse"
-                class="navbar-toggler" data-target="#navcol-1"></button>
-            <div class="collapse navbar-collapse" id="navcol-1"><a class="btn btn-primary ml-auto" role="button"
-                href="/signup">Sign Up</a></div>
+    <nav class="navbar navbar-light navbar-expand bg-light navigation-clea" style="color: rgb(0,0,0);background-color: #444444;">
+        <div class="container"><a class="navbar-brand" href="#" style="color: #ffffff;">NinTracker</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"></button>
+            <div class="collapse navbar-collapse" id="navcol-1"><a class="btn btn-primary ml-auto" role="button" href="/signup" style="background-color: #e4000f;border-width: 0;">Sign Up</a></div>
         </div>
     </nav>
-    <div class="highlight-phone">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-8 col-xl-6">
+    <div class="highlight-phone" style="background: url(https://st3.depositphotos.com/1839407/18975/i/1600/depositphotos_189757178-stock-photo-retro-nintendo-games.jpg) right;">
+        <div class="container" style="filter: contrast(136%);">
+            <div class="row" style="background-color: rgba(221,221,221,0.74);">
+                <div class="col-12 col-md-8 col-xl-6 offset-lg-2 text-center mx-auto" style="margin: auto;margin-left: 100px;margin-right: 100px;">
                     <div class="intro">
-                        <h2>Welcome to the Nintendo Tracker!</h2>
-                        <p>Awesome description goes here!!.</p>
+                        <h2>Welcome to NinTracker</h2>
+                        <p>The perfect place for game suggestions based on your taste and preferences. Search for a Nintendo game, and add it to your list of games to play!</p>
                     </div>
                 </div>
-                <div class="col-xl-4 offset-xl-2">
+                <div class="col-xl-4 offset-xl-2 m-auto" style="background-color: rgba(221,221,221,0.74);">
                     <form class="login">
                         <h2 class="">Login Form</h2>
                         <div class="illustration"></div>
@@ -61,110 +63,55 @@
             </div>
         </div>
     </div>
-    <section class="features-icons bg-light text-center">
-        <div class="container">
+    <section class="features-icons bg-light text-center" style="background: url(https://st3.depositphotos.com/1839407/18975/i/1600/depositphotos_189757178-stock-photo-retro-nintendo-games.jpg) left;">
+        <div class="container" style="filter: contrast(136%);">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-4" style="background-color: rgba(221,221,221,0.74);">
                     <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
-                        <div class="d-flex features-icons-icon"><i class="fas fa-gamepad m-auto text-primary"
-                                data-bs-hover-animate="tada"></i></div>
-                        <h3>Fully Responsive</h3>
-                        <p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
+                        <div class="d-flex features-icons-icon"><i class="fas fa-gamepad m-auto text-primary" data-bs-hover-animate="tada" id="ninIcon" style="color: #e4000f;"></i></div>
+                        <h3>Every Nintendo Game!</h3>
+                        <p class="lead mb-0">Over *large number* of games available!</p>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4" style="background-color: rgba(221,221,221,0.74);">
                     <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
-                        <div class="d-flex features-icons-icon"><i class="fas fa-search m-auto text-primary"
-                                data-bs-hover-animate="swing"></i></div>
-                        <h3>Bootstrap 4 Ready</h3>
-                        <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4 framework!</p>
+                        <div class="d-flex features-icons-icon"><i class="fas fa-search m-auto text-primary" data-bs-hover-animate="swing"></i></div>
+                        <h3>Easy Searching</h3>
+                        <p class="lead mb-0">As easy as level 1-1</p>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4" style="background-color: rgba(221,221,221,0.74);">
                     <div class="mx-auto features-icons-item mb-5 mb-lg-0 mb-lg-3">
-                        <div class="d-flex features-icons-icon"><i class="fas fa-save m-auto text-primary"
-                                data-bs-hover-animate="flash"></i></div>
-                        <h3>Easy to Use</h3>
-                        <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+                        <div class="d-flex features-icons-icon"><i class="fas fa-save m-auto text-primary" data-bs-hover-animate="flash"></i></div>
+                        <h3><strong>Save Your Games</strong></h3>
+                        <p class="lead mb-0">Keep track of the games you want to play!</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="showcase">
-        <div class="container-fluid p-0">
-            <div class="row no-gutters">
-                <div class="col-lg-6 order-lg-2 text-white showcase-img"
-                    style="background-image:url(&quot;assets/img/bg-showcase-1.jpg&quot;);"><span></span></div>
-                <div class="col-lg-6 my-auto order-lg-1 showcase-text">
-                    <h2>Fully Responsive Design</h2>
-                    <p class="lead mb-0">When you use a theme created with Bootstrap, you know that the theme will look
-                        great on any device, whether it's a phone, tablet, or desktop the page will behave responsively!
-                    </p>
-                </div>
-            </div>
-            <div class="row no-gutters">
-                <div class="col-lg-6 text-white showcase-img"
-                    style="background-image:url(&quot;assets/img/bg-showcase-2.jpg&quot;);"><span></span></div>
-                <div class="col-lg-6 my-auto order-lg-1 showcase-text">
-                    <h2>Updated For Bootstrap 4</h2>
-                    <p class="lead mb-0">Newly improved, and full of great utility classes, Bootstrap 4 is leading the
-                        way in mobile responsive web development! All of the themes are now using Bootstrap 4!</p>
-                </div>
-            </div>
-            <div class="row no-gutters">
-                <div class="col-lg-6 order-lg-2 text-white showcase-img"
-                    style="background-image:url(&quot;assets/img/bg-showcase-3.jpg&quot;);"><span></span></div>
-                <div class="col-lg-6 my-auto order-lg-1 showcase-text">
-                    <h2>Easy to Use &amp;&nbsp;Customize</h2>
-                    <p class="lead mb-0">Landing Page is just HTML and CSS with a splash of SCSS for users who demand
-                        some deeper customization options. Out of the box, just add your content and images, and your
-                        new landing page will be ready to go!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="testimonials text-center bg-light">
-        <div class="container">
-            <h2 class="mb-5">What people are saying...</h2>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3"
-                            src="assets/img/testimonials-1.jpg">
-                        <h5>Margaret E.</h5>
-                        <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3"
-                            src="assets/img/testimonials-2.jpg">
-                        <h5>Fred S.</h5>
-                        <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of
-                            super nice landing pages."</p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3"
-                            src="assets/img/testimonials-3.jpg">
-                        <h5>Sarah W.</h5>
-                        <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to
-                            us!"</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="showcase"></section>
     <footer class="footer bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 my-auto h-100 text-center text-lg-left">
-                    <div class="card-body">
-                        Powered by <a href="https://rawg.io/apidocs">RAWG API</a>
-                        <br>
-                        Click <a href="https://github.com/AndrewCodesDontYaKnow/NintendoTracker">here</a> to view the
-                        source code on
-                        Github.
-                    </div>
+                    <ul class="list-inline mb-2">
+                        <li class="list-inline-item"><a href="#" style="color: #e4000f;">About</a></li>
+                        <li class="list-inline-item"><span>⋅</span></li>
+                        <li class="list-inline-item"><a href="#" style="border-color: #e4000f;color: #e4000f;">Contact</a></li>
+                        <li class="list-inline-item"><span>⋅</span></li>
+                        <li class="list-inline-item"><a href="#" style="color: #e4000f;">Terms of &nbsp;Use</a></li>
+                        <li class="list-inline-item"><span>⋅</span></li>
+                        <li class="list-inline-item"><a href="#" style="color: #e4000f;">Privacy Policy</a></li>
+                    </ul>
+                    <p class="text-muted small mb-4 mb-lg-0">© Nintendo Tracker 2020. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-6 my-auto h-100 text-center text-lg-right">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook fa-2x fa-fw" style="color: #e4000f;"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter fa-2x fa-fw" style="color: #e4000f;"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-instagram fa-2x fa-fw" style="color: #e4000f;"></i></a></li>
+                    </ul>
                 </div>
             </div>
         </div>
