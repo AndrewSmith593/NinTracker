@@ -16,7 +16,9 @@ $(document).ready(function () {
 
   // ==================== Buttons ==================== //
 
-  $("#gameSave").click(function () {  // when the SAVE BUTTON is clicked
+  $("#gameSave").click(function () { 
+    console.log("save button clicked")
+     // when the SAVE BUTTON is clicked
     // create an object to send to api/games that holds the game data we want to add
     newGame = { "gameName": gameName, "gameID": currentGameID, "completion": false, "userId": userIDNumber }
     gameList.empty(); // clear the saved game list
@@ -25,13 +27,16 @@ $(document).ready(function () {
       url: "/api/games",
       data: newGame,
       success: function () { // once the game is saved to the table, rerender the updated saved games list
-        console.log(`Game added to reference table`);
+        // console.log(`Game added to reference table`);
         showSavedGames();
       }
     });
   });
 
   $("#searchButton").click(function () { // when the SEARCH BUTTON is clicked
+    $("#gameSave").removeClass("d-none");
+    $("#gameInfoCard").removeClass("d-none");
+    $("#savedGameBox").removeClass("d-none");
     var gameSearch = $("#gameSearch").val().trim().replace(/\s+/g, "+"); // trim the values from the search box and replace spaces betwen words with "+"
     var queryURL = "https://api.rawg.io/api/games?search=" + gameSearch; // set up the URL for the RAWG API request
     $.ajax({ // RAWG GET request
@@ -62,12 +67,12 @@ $(document).ready(function () {
           }
           // BRAINSTORM funny responses for nin-Nintendo game results
       }
-      console.log(`here is the nintendoGames array:`)
-      console.log(nintendoGames)
+      // console.log(`here is the nintendoGames array:`)
+      // console.log(nintendoGames)
     }
    
         console.log(`here is the filtered games nintendoGames`)
-        console.log(nintendoGames);
+        // console.log(nintendoGames);
         $('#gameSearch').val(''); // clear the search bar
         var firstResult = nintendoGames[0];
         console.log(`here is the first result: ${firstResult}`)
