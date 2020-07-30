@@ -1,61 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <title>Sign up</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap Stylesheet Link -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link href="./assets/css/styles.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>NinTracker Sign Up</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/Header-Blue.css">
+    <link rel="stylesheet" href="assets/css/Header-Dark.css">
+    <link rel="stylesheet" href="assets/css/Highlight-Phone.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
+    <link rel="stylesheet" href="assets/css/Newsletter-Subscription-Form.css">
+    <link rel="stylesheet" href="assets/css/Projects-Horizontal.css">
+    <link href="./assets/css/styles.css" rel="stylesheet">
 </head>
 
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-      </div>
-    </div>
-  </nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="jumbotron">
-          <h1 class="display-4">Sign up for Nintendo Tracker</h1>
-          <form class="signup">
-            <div class="form-group">
-              <label for="email-input">Email address</label>
-              <input type="email" class="form-control" id="email-input" placeholder="email@email.com">
-            </div>
-            <div class="form-group">
-              <label for="password-input">Password</label>
-              <input type="password" class="form-control" id="password-input" placeholder="Password">
-            </div>
-            <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-              <span class="sr-only">Error:</span> <span class="msg"></span>
-            </div>
-            <button type="submit" class="btn btn-lg btn-success">Sign Up</button>
-          </form>
-          <br />
-          <p>Or log in <a href="/login">here</a></p>
+    <nav class="navbar navbar-light navbar-expand bg-light navigation-clean" style="color: rgb(0,0,0);background-color: #444444;">
+        <div class="container"><a class="navbar-brand" href="#">NinTracker</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"></button>
+            <div class="collapse navbar-collapse" id="navcol-1"><a class="btn btn-primary ml-auto" role="button" href="/login" style="background-color: #e4000f;border-width: 0;">Log In</a></div>
         </div>
-      </div>
+    </nav>
+    <div class="highlight-phone" style="background: url(https://st3.depositphotos.com/1839407/18975/i/1600/depositphotos_189757178-stock-photo-retro-nintendo-games.jpg) right;">
+        <div class="container">
+            <div class="row" style="background-color: rgba(221,221,221,0.74);text-align: center;">
+                <div class="col-12 col-md-8 col-xl-6 offset-lg-2 m-auto" style="text-align: center;">
+                    <div class="intro">
+                        <h2>Sign up for NinTracker</h2>
+                        <p>The perfect place for game suggestions based on your taste and preferences. Search for a Nintendo game, and add it to your list of games to play!</p>
+                    </div>
+                </div>
+                <div class="col-xl-4 offset-xl-2" style="background-color: rgba(221,221,221,0.74);">
+                    <form class="text-center signup">
+                        <h2 class="sr-only">Login Form</h2>
+                        <div class="illustration"></div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email-input" placeholder="email@email.com">
+                          </div>
+                          <div class="form-group">
+                            <input type="password" class="form-control" id="password-input" placeholder="Password">
+                          </div>
+                        <div class="form-group"><button class="btn btn-primary btn-block pulse animated" type="submit" style="background-color: #e4000f;border-width: 0;">Sign Up</button></div><a class="forgot" href="/login">Already have an account? Log in here!</a></form>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <footer>
-    <div class="card-body">
-      Powered by <a href="https://rawg.io/apidocs">RAWG API</a>
-      <br>
-      Click <a href="https://github.com/AndrewCodesDontYaKnow/NintendoTracker">here</a> to view the source code on
-      Github.
-    </div>
-  </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/signup.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script type="text/javascript" src="js/signup.js"></script>
 </body>
 
 </html>
