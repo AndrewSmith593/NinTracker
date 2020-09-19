@@ -21,6 +21,7 @@ An app that allows the user to create an account, then search a desired game tit
 
   
   Screenshot of NinTracker's main page
+  
  ![NinTracker screenshot](./img/nintrackmain.png)
 
 
