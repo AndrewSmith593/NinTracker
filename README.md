@@ -1,8 +1,7 @@
 # NinTracker
-A Nintendo game finder and database
 
   ## Description
-An app that allows the user to type in a desired game title or genre, with the outcome of a detailed description and image of gameplay. Users can save favorite games to a "Saved Games" list.
+An app that allows the user to create an account, then search a desired game title or genre, then receive a detailed description and image of gameplay in a novel handheld game console display. Users can save favorite games to a "Saved Games" list for future reference.
 
   URL: https://boiling-plains-43100.herokuapp.com/
   
